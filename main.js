@@ -15,6 +15,8 @@ function displayMap(){
 		var marker = new google.maps.Marker({position: event.latLng, map: map});
 		
 		var latAndLng = event.latLng.toString();
+		latAndLng = latAndLng.replace(/[{()}]/g, '');
+		latAndLng = latAndLng.replace(/\s/gi,'');
 		var contentString = '<div>' + event.latLng + '</div>';
 
 		var infoWindow = new google.maps.InfoWindow({
@@ -32,13 +34,8 @@ function displayMap(){
 		function getDataFromAPI(latAndLng, callbackFunction){
 			console.log('get data called');
 			var settings ={
-				url:'https://maps.googleapis.com/maps/api/geocode/',
-				data:{
-					latlng:latAndLng,
-					key: APIKey
-				},
-				dataType: 'jsonp',
-				type:'GET',
+				//url:'https://maps.googleapis.com/maps/api/geocode/json?latlng='+latAndLng+'&key='+APIKey,
+				url:'https://maps.googleapis.com/maps/api/geocode/json?latlng=42.877742,-97.380979&key=AIzaSyADZZ47Y-o54dJiJsxFJdeb2wnT5CSlkcQ',
 				//result_type: country,
 				success: callbackFunction
 			};
@@ -47,10 +44,25 @@ function displayMap(){
 			console.log('ajax settings called');
 		}
 
-		function callbackFunction(){
-			console.log('callback called');
-			console.log('here is the response '+ "results");
+	});
+
+}
+		function callbackFunction(data){
+			//console.log('callback called data '+ data);
+			console.log('here is the response '+ data.status);
+			console.log('results '+data.results)
+			console.log(data.results.GeocoderResult);
 		}
+
+
+$(document).ready(function(){
+	console.log('document ready callled');
+	displayMap();
+	//markerListener();
+});
+
+
+
 		
 
 
@@ -60,14 +72,3 @@ function displayMap(){
 		// 		marker.setMap(null);
 		// 	}
 		// }
-	});
-
-}
-
-
-
-$(document).ready(function(){
-	console.log('document ready callled');
-	displayMap();
-	//markerListener();
-});
