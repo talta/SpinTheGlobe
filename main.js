@@ -1,5 +1,6 @@
 var map;
 var APIKey = 'AIzaSyADZZ47Y-o54dJiJsxFJdeb2wnT5CSlkcQ';
+var geocoder = new google.maps.Geocoder;
 
 function displayMap(){
 
@@ -29,25 +30,35 @@ function displayMap(){
 		console.log(latAndLng);
 
 
-		getDataFromAPI(latAndLng);
-		///get info from API
-		function getDataFromAPI(latAndLng){
-			console.log('get data called');
-			var settings ={
-				//url:'https://maps.googleapis.com/maps/api/geocode/json?latlng='+latAndLng+'&key='+APIKey,
-				url:'https://maps.googleapis.com/maps/api/geocode/json?latlng=42.877742,-97.380979&key=AIzaSyADZZ47Y-o54dJiJsxFJdeb2wnT5CSlkcQ',
-				//result_type: country,
-				success: function(data, status){
-					console.log('results '+ results[1].formatted_address);
-					console.log(typeof(results));
-					console.log('result log attempted');
+		// getDataFromAPI(latAndLng);
+		// ///get info from API
+		// function getDataFromAPI(latAndLng){
+		// 	console.log('get data called');
+		// 	var settings ={
+		// 		//url:'https://maps.googleapis.com/maps/api/geocode/json?latlng='+latAndLng+'&key='+APIKey,
+		// 		url:'https://maps.googleapis.com/maps/api/geocode/json?latlng=42.877742,-97.380979&key=AIzaSyADZZ47Y-o54dJiJsxFJdeb2wnT5CSlkcQ',
+		// 		//result_type: country,
+		// 		success: function(data, status){
+		// 			console.log('results '+ results[1].formatted_address);
+		// 			console.log(typeof(results));
+		// 			console.log('result log attempted');
+		// 		}
+		// 	};
+		// 	console.log(settings);
+		// 	$.ajax(settings);
+		// 	console.log('ajax settings called');
+		// }
+		///alternative way to call the geocoder function
+		geocodeLatLng(geocode, map, infoWindow);
+		function geocodeLatLng(geocode, map, infoWindow){
+			geocoder.Geocode({'location':latAndLng}, function(results, status){
+				if (status === 'OK'){
+					console.log(results);
+				}else {
+					window.alert('Geocoder failed due to '+status);
 				}
-			};
-			console.log(settings);
-			$.ajax(settings);
-			console.log('ajax settings called');
+			})
 		}
-
 	});
 
 }
