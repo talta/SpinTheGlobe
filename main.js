@@ -29,15 +29,19 @@ function displayMap(){
 		console.log(latAndLng);
 
 
-		getDataFromAPI(latAndLng, callbackFunction);
+		getDataFromAPI(latAndLng);
 		///get info from API
-		function getDataFromAPI(latAndLng, callbackFunction){
+		function getDataFromAPI(latAndLng){
 			console.log('get data called');
 			var settings ={
 				//url:'https://maps.googleapis.com/maps/api/geocode/json?latlng='+latAndLng+'&key='+APIKey,
 				url:'https://maps.googleapis.com/maps/api/geocode/json?latlng=42.877742,-97.380979&key=AIzaSyADZZ47Y-o54dJiJsxFJdeb2wnT5CSlkcQ',
 				//result_type: country,
-				success: callbackFunction
+				success: function(data, status){
+					console.log('results '+ results[1].formatted_address);
+					console.log(typeof(results));
+					console.log('result log attempted');
+				}
 			};
 			console.log(settings);
 			$.ajax(settings);
@@ -47,12 +51,12 @@ function displayMap(){
 	});
 
 }
-		function callbackFunction(data){
-			//console.log('callback called data '+ data);
-			console.log('here is the response '+ data.status);
-			console.log('results '+data.results)
-			console.log(data.results.GeocoderResult);
-		}
+		// function callbackFunction(data, results, status){
+		// 	//console.log('callback called data '+ data);
+		// 	console.log('here is the response '+ status);
+		// 	console.log('results '+results)
+		// 	console.log(data.results.GeocoderResult);
+		// }
 
 
 $(document).ready(function(){
