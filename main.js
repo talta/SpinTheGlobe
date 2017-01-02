@@ -52,12 +52,6 @@ function displayMap(){
 
 }
 
-		// function callbackFunction(data, results, status){
-		// 	//console.log('callback called data '+ data);
-		// 	console.log('here is the response '+ status);
-		// 	console.log('results '+results)
-		// 	console.log(data.results.GeocoderResult);
-		// }
 
 
 
