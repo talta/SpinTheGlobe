@@ -14,53 +14,45 @@ function displayMap(){
 	map.addListener('click', function(event){
 		//removeMarker();
 		var marker = new google.maps.Marker({position: event.latLng, map: map});
-		
+		var geocoder = new google.maps.Geocoder();
 		var latAndLng = event.latLng.toString();
 		latAndLng = latAndLng.replace(/[{()}]/g, '');
-		latAndLng = latAndLng.replace(/\s/gi,'');
-		var contentString = '<div>' + event.latLng + '</div>';
+		// latAndLng = latAndLng.replace(/\s/gi,'');
+		var latlngStr = latAndLng.split(',', 2);
+		console.log('latlngstr '+latlngStr);
+        var latLng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+		
 
-		var infoWindow = new google.maps.InfoWindow({
-			content: contentString
-		});
+		
 
-		infoWindow.open(map, marker);
 
-		console.log(latAndLng);
-		// var latlngStr = input.split(',', 2);
-  //       var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+		console.log(latLng)
         
-        geocoder.geocode({'location': latAndLng}, function(results, status) {
+        geocoder.geocode({'location': latLng}, function(results, status) {
 			if (status === 'OK'){
-					console.log(results);
+					console.log(results[0].formatted_address);
+					var address = results[0].formatted_address;
+					var message = address;
+					UpdateWindowMessage(message);
 				}else {
-					window.alert('Geocoder failed due to '+status);
+					message = ('Geocoder failed due to '+status);
+					UpdateWindowMessage(message);
 				}
-
-			// contentString = '<div>' + event.latLng + '</div>';
-
-			infoWindow = new google.maps.InfoWindow({
-				content: contentString
+		function UpdateWindowMessage(message){
+			var infoWindow = new google.maps.InfoWindow({
+				content: message
 			});
 
 		infoWindow.open(map, marker);
+
+		}
+
 		});
 
     });
 }
 
 
-
-
-$(document).ready(function(){
-	console.log('document ready callled');
-	displayMap();
-	//markerListener();
-});
-
-
-
-		
 
 
 		
