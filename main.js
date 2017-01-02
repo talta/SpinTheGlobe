@@ -8,7 +8,6 @@ function displayMap(){
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 4,
 		center: loc
-		//center: 'United+States+of+America'
 	});
 
 	map.addListener('click', function(event){
@@ -24,11 +23,9 @@ function displayMap(){
 			content: contentString
 		});
 
-
 		infoWindow.open(map, marker);
 
 		console.log(latAndLng);
-
 
 		// getDataFromAPI(latAndLng);
 		// ///get info from API
@@ -38,20 +35,22 @@ function displayMap(){
 		// 		//url:'https://maps.googleapis.com/maps/api/geocode/json?latlng='+latAndLng+'&key='+APIKey,
 		// 		url:'https://maps.googleapis.com/maps/api/geocode/json?latlng=42.877742,-97.380979&key=AIzaSyADZZ47Y-o54dJiJsxFJdeb2wnT5CSlkcQ',
 		// 		//result_type: country,
-		// 		success: function(data, status){
-		// 			console.log('results '+ results[1].formatted_address);
+		// 		success: function(results, status){
+		// 			console.log('results '+ results);
 		// 			console.log(typeof(results));
 		// 			console.log('result log attempted');
+		// 			console.log(status+' for the status');
 		// 		}
 		// 	};
 		// 	console.log(settings);
 		// 	$.ajax(settings);
 		// 	console.log('ajax settings called');
 		// }
-		///alternative way to call the geocoder function
-		geocodeLatLng(geocode, map, infoWindow);
-		function geocodeLatLng(geocode, map, infoWindow){
-			geocoder.Geocode({'location':latAndLng}, function(results, status){
+		////alternative way to call the geocoder function
+		geocodeLatLng(geocoder, latAndLng, map, infoWindow);
+		function geocodeLatLng(geocoder, latAndLng, map, infoWindow){
+			console.log(geocoder);
+			geocoder.geocode({'location':latAndLng}, function(results, status){
 				if (status === 'OK'){
 					console.log(results);
 				}else {
