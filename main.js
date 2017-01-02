@@ -17,38 +17,44 @@ function displayMap(){
 		var geocoder = new google.maps.Geocoder();
 		var latAndLng = event.latLng.toString();
 		latAndLng = latAndLng.replace(/[{()}]/g, '');
-		// latAndLng = latAndLng.replace(/\s/gi,'');
 		var latlngStr = latAndLng.split(',', 2);
 		console.log('latlngstr '+latlngStr);
         var latLng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
 		
 
 		
-
-
-		console.log(latLng)
-        
         geocoder.geocode({'location': latLng}, function(results, status) {
 			if (status === 'OK'){
 					console.log(results[0].formatted_address);
+					console.log(results[0].address_components);
+					/////find the address components here
 					var address = results[0].formatted_address;
 					var message = address;
 					UpdateWindowMessage(message);
+					var addressComponents = results[0].address_components
+					FindTheCountry(addressComponents);
 				}else {
-					message = ('Geocoder failed due to '+status);
+					message = ('Oops, please select another location.');
 					UpdateWindowMessage(message);
 				}
+
 		function UpdateWindowMessage(message){
 			var infoWindow = new google.maps.InfoWindow({
 				content: message
 			});
-
 		infoWindow.open(map, marker);
-
 		}
 
 		});
 
+        function FindTheCountry(){
+        	///loop through the console.log(results[0].address_components to find the type of country
+        	///go up the object one parent and grab the long name which will be the country name
+        }
+
+        function FindCountryInfo(){
+
+        }
     });
 }
 
