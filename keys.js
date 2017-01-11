@@ -1,2 +1,1 @@
-CLIENT_ID = ""
-CLIENT_SECRET = ""
+CLIENT_ID = 'AIzaSyBQOY_LWXjQCdgZh3x2RrJwEJeAfeaElek';

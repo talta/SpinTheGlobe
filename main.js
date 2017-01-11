@@ -1,8 +1,12 @@
 var map;
 var marker;
+var MAPURL = "https://maps.googleapis.com/maps/api/js?key"+CLIENT_ID
+
+
 
 
 function displayMap(){
+	console.log(MAPURL);
 
 	var loc = {lat: 42.877742, lng: -97.380979};
 
@@ -60,6 +64,9 @@ function displayMap(){
 	});
 }
 /////event listener from previous branch
+$(document).ready(function(){
+	displayMap();
+})
 
 		
 		
