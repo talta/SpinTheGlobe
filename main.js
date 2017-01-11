@@ -1,5 +1,5 @@
 var map;
-var APIKey = 'AIzaSyADZZ47Y-o54dJiJsxFJdeb2wnT5CSlkcQ';
+var marker;
 
 
 function displayMap(){
@@ -12,8 +12,9 @@ function displayMap(){
 	});
 	
 	map.addListener('click', function(event){
-		//removeMarker();
-		var marker = new google.maps.Marker({position: event.latLng, map: map});
+		removeMarker();
+		marker = new google.maps.Marker({position: event.latLng, map: map});
+		console.log('type of marker is '+typeof marker);
 		var geocoder = new google.maps.Geocoder();
 		var latAndLng = event.latLng.toString();
 		latAndLng = latAndLng.replace(/[{()}]/g, '');
@@ -23,6 +24,7 @@ function displayMap(){
 		
 
 		
+
         geocoder.geocode({'location': latLng}, function(results, status) {
 			if (status === 'OK'){
 					console.log(results[0].formatted_address);
@@ -31,39 +33,33 @@ function displayMap(){
 					var address = results[0].formatted_address;
 					var message = address;
 					UpdateWindowMessage(message);
-					var addressComponents = results[0].address_components
-					FindTheCountry(addressComponents);
+					//var addressComponents = results[0].address_components
+					//FindTheCountry(addressComponents);
 				}else {
 					message = ('Oops, please select another location.');
 					UpdateWindowMessage(message);
 				}
 
-		function UpdateWindowMessage(message){
-			var infoWindow = new google.maps.InfoWindow({
-				content: message
-			});
-		infoWindow.open(map, marker);
-		}
+
+			function UpdateWindowMessage(message){
+
+				var infoWindow = new google.maps.InfoWindow({
+					content: message
+				});
+				infoWindow.open(map, marker);
+			}
 
 		});
-
-        function FindTheCountry(){
-        	///loop through the console.log(results[0].address_components to find the type of country
-        	///go up the object one parent and grab the long name which will be the country name
-        }
-
-        function FindCountryInfo(){
-
-        }
-    });
+		function removeMarker(){
+			if(typeof marker === 'object' && marker !== null){
+				if (map.getBounds().contains(marker.getPosition() ) ){
+					marker.setMap(null);
+				}
+			}
+		}
+	});
 }
-
-
-
+/////event listener from previous branch
 
 		
-		// function removeMarker(){
-		// 	if (map.getBounds().contains(marker.getPosition())){
-		// 		marker.setMap(null);
-		// 	}
-		// }
+		
