@@ -6,19 +6,17 @@ var MAPURL = "https://maps.googleapis.com/maps/api/js?key"+CLIENT_ID
 
 
 function displayMap(){
-	console.log(MAPURL);
 
-	var loc = {lat: 42.877742, lng: -97.380979};
+	var loc = {lat: 0, lng: 0};
 
 	var map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 4,
+		zoom: 2,
 		center: loc
 	});
 	
 	map.addListener('click', function(event){
 		removeMarker();
 		marker = new google.maps.Marker({position: event.latLng, map: map});
-		console.log('type of marker is '+typeof marker);
 		var geocoder = new google.maps.Geocoder();
 		var latAndLng = event.latLng.toString();
 		latAndLng = latAndLng.replace(/[{()}]/g, '');
@@ -40,7 +38,7 @@ function displayMap(){
 					//var addressComponents = results[0].address_components
 					//FindTheCountry(addressComponents);
 				}else {
-					message = ('Oops, please select another location.');
+					message = ('This body of water is unmarked, but it contains treasures.');
 					UpdateWindowMessage(message);
 				}
 
