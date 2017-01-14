@@ -1,6 +1,6 @@
 var map;
 var marker;
-var MAPURL = "https://maps.googleapis.com/maps/api/js?keyAIzaSyBQOY_LWXjQCdgZh3x2RrJwEJeAfeaElek"
+var MAPURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBQOY_LWXjQCdgZh3x2RrJwEJeAfeaElek"
 
 
 
