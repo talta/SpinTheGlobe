@@ -60,10 +60,7 @@ function displayMap(){
 		}
 	});
 }
-/////event listener from previous branch
-$(document).ready(function(){
-	displayMap();
-})
+
 
 		
 		
