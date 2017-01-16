@@ -1,11 +1,10 @@
 var map;
 var marker;
-
+// var MAPURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBQOY_LWXjQCdgZh3x2RrJwEJeAfeaElek";
 
 
 
 function displayMap(){
-	console.log(MAPURL);
 	var loc = {lat: 0, lng: 0};
 
 	var map = new google.maps.Map(document.getElementById('map'), {
