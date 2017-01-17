@@ -4,15 +4,12 @@
 #map {
 	height: 500px;
 	width: 100%; 
-
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
 }
 
 p{
 	text-align: center;
 }
 
-#map{
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-	border-radius: 50%;
-}
