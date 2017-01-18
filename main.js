@@ -1,6 +1,5 @@
 var map;
 var marker;
-var icons = []
 
 
 
@@ -16,9 +15,8 @@ function displayMap(){
 		removeMarker();
 		marker = new google.maps.Marker({
 			position: event.latLng, 
-			map: map,
+			map: map
 			// animation: google.maps.Animation.DROP,
-			label: icons
 		});
 		var geocoder = new google.maps.Geocoder();
 		var latAndLng = event.latLng.toString();
@@ -35,8 +33,10 @@ function displayMap(){
 					console.log(results[0].formatted_address);
 					console.log(results[0].address_components);
 					/////find the address components here
+					
 					var address = results[0].formatted_address;
 					var message = address;
+					findCountryValue(results);
 					UpdateWindowMessage(message);
 					//var addressComponents = results[0].address_components
 					//FindTheCountry(addressComponents);
@@ -61,6 +61,23 @@ function displayMap(){
 					marker.setMap(null);
 				}
 			}
+		}
+		function findCountryValue(results){
+			console.log('find country nme called');
+			var address = results[0].address_components;
+			console.log(results[0].address_components.length-1);
+			for(var i = 0; i<=results[0].address_components.length-1; i++){
+				console.log(results[0].address_components[i].types[0]);
+				if (results[0].address_components[i].types[0] ==='country'){
+					console.log('this is the country '+results[0].address_components[i].types[0]);
+				}else{
+					console.log('this is not the country');
+				}
+
+			};
+		}
+		function UNAPIConnection(){
+
 		}
 	});
 }
