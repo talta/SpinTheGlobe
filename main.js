@@ -75,8 +75,8 @@ function displayMap(){
 		function UNAPIConnection(country, HandleUNAPIData){
 			var settings = {
 				// url="http://api.undata-api.org/WHO/database/dataset/"+country"/records?app_id=8d589065&app_key=8bf907342cecae539da5d84b330e5542";
-				url="http://api.undata-api.org/";
-				data:{
+				url: "http://api.undata-api.org/",
+				data: {
 					organization: "WHO",
 					database: "WHO Data",
 					dataset: "Median Consume Price Ratio of Selected Generic Medicines",
@@ -85,7 +85,7 @@ function displayMap(){
 					app_id: "8d589065",
 					app_key: "8bf907342cecae539da5d84b330e5542"
 				}
-			}
+			};
 			$.ajax(settings);
 		}
 		function HandleUNAPIData(){
