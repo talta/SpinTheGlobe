@@ -63,22 +63,32 @@ function displayMap(){
 			}
 		}
 		function findCountryValue(results){
-			console.log('find country nme called');
 			var address = results[0].address_components;
-			console.log(address.length-1);
 			for(var i = 0; i<=address.length-1; i++){
-				console.log(address[i].types[0]);
 				if (address[i].types[0] ==='country'){
-					console.log('this is the country '+address[i].types[0]);
 					var country = address[i].long_name;
-					console.log('this is the parent of the country '+ country)
-				}else{
-					console.log('this is not the country');
+					console.log(country);
+					// UNAPIConnection(country);
 				}
-
 			};
 		}
-		function UNAPIConnection(){
+		function UNAPIConnection(country, HandleUNAPIData){
+			var settings = {
+				// url="http://api.undata-api.org/WHO/database/dataset/"+country"/records?app_id=8d589065&app_key=8bf907342cecae539da5d84b330e5542";
+				url="http://api.undata-api.org/";
+				data:{
+					organization: "WHO",
+					database: "WHO Data",
+					dataset: "Median Consume Price Ratio of Selected Generic Medicines",
+					country: country,
+					records: "records",
+					app_id: "8d589065",
+					app_key: "8bf907342cecae539da5d84b330e5542"
+				}
+			}
+			$.ajax(settings);
+		}
+		function HandleUNAPIData(){
 
 		}
 	});
