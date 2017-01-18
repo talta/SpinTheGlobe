@@ -7,9 +7,28 @@
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
+	border-color: black;
+
 }
 
-p{
+/*p{
+	text-align: center;
+}*/
+
+nav{
+	/*background-color: lemonchiffon;*/
+	background-color: lightgoldenrodyellow;
+}
+
+
+header h1{
+	right: 50%;
+	text-align: center;
+	color: skyblue;
+	text-shadow: 1px 2px 1px;
+}
+
+body{
+	padding-top: 70px;
 	text-align: center;
 }
-
