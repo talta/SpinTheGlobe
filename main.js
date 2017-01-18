@@ -65,11 +65,13 @@ function displayMap(){
 		function findCountryValue(results){
 			console.log('find country nme called');
 			var address = results[0].address_components;
-			console.log(results[0].address_components.length-1);
-			for(var i = 0; i<=results[0].address_components.length-1; i++){
-				console.log(results[0].address_components[i].types[0]);
-				if (results[0].address_components[i].types[0] ==='country'){
-					console.log('this is the country '+results[0].address_components[i].types[0]);
+			console.log(address.length-1);
+			for(var i = 0; i<=address.length-1; i++){
+				console.log(address[i].types[0]);
+				if (address[i].types[0] ==='country'){
+					console.log('this is the country '+address[i].types[0]);
+					var country = address[i].long_name;
+					console.log('this is the parent of the country '+ country)
 				}else{
 					console.log('this is not the country');
 				}
