@@ -1,5 +1,6 @@
 var map;
 var marker;
+var icons = []
 
 
 
@@ -13,7 +14,12 @@ function displayMap(){
 	
 	map.addListener('click', function(event){
 		removeMarker();
-		marker = new google.maps.Marker({position: event.latLng, map: map});
+		marker = new google.maps.Marker({
+			position: event.latLng, 
+			map: map,
+			// animation: google.maps.Animation.DROP,
+			label: icons
+		});
 		var geocoder = new google.maps.Geocoder();
 		var latAndLng = event.latLng.toString();
 		latAndLng = latAndLng.replace(/[{()}]/g, '');

@@ -3,12 +3,13 @@
 
 #map {
 	height: 500px;
-	width: 100%; 
+	width: 70%; 
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	border-color: black;
-
+	margin-right: auto;
+	margin-left: auto;
 }
 
 
