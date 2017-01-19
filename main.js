@@ -45,7 +45,6 @@ function displayMap(){
 
 
 			function UpdateWindowMessage(message){
-
 				var infoWindow = new google.maps.InfoWindow({
 					content: message
 				});

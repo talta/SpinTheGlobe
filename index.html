@@ -7,7 +7,7 @@
 	<title>Where in the World</title>
 
 <!-- external files -->
-	<link rel="stylesheet" href="https://css/normalize.css"/>
+<!-- 	<link rel="stylesheet" href="https://css/normalize.css"/> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css?family=Alegreya| Lora" rel="stylesheet">
@@ -17,36 +17,53 @@
 
 <!-- Javascript -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script type="text/javascript" src="main.js"></script>
 	<script async defer
 	src ="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQOY_LWXjQCdgZh3x2RrJwEJeAfeaElek&callback=displayMap">
     </script>
-
+    <script type="text/javascript" src="main.js"></script>
 
 </head>
 
-<header>
-	<nav class="navbar-fixed-top">
-	  <div class="container">
-	  	<img src='spyglass.svg' alt='spyglass'>
-	 	<h1>Where in the World</h1>
-	 	<img src='compass.svg' alt='compass'>
-	  </div>
-	</nav>
-
-
-</header>
-
-
 <body>
-	<h4>Select a location on the map to learn where your next destination might be.
-	</h4>
-	
-	<div id="map"></div>
+	  	<nav >
+			<div class="row">
+	 <div class="container">
 
-	<p>  The world may be flat, but it is a big place.  Full of roads which are unnamed.  Cities that have yet to be built.  Oceans without markers.  The days remain where dreams are borderless, cities are gilded, colors are vibrant. Where would you like to live?  Where would you like to go?  
-	<p>
+			  	<div class="col-md-2">
+			  		<img id='leftImage' src='spyglass.svg' alt='spyglass'>
+			  	</div>
+			 	<div class="col-md-8">
+			 		<h1>Where in the World</h1>
+			 	</div>
+			 	<div class="col-md-2">
+			 		<img  id='rightImage' src='compass.svg' alt='compass'>
+			 	</div>
+			 </div>
+		 </nav>
+		 <div class="row">
+		 	<div class="col-md-12">
+		 		<h4>Select a location on the map to learn where your next destination might be.
+		 		</h4>
+		 	</div>
+		 </div>
+		 <div class="row">
+		 	<div class="col-md-12" id="map">
+		 	</div>
+		 </div>
+		 <div class="row">
+		 	<div class="col-md-12">
+		 		<p> The world may be flat, but it is a big place.  Full of roads which are unnamed.  Cities that have yet to be built.  Oceans without markers.  The days remain where dreams are borderless, cities are gilded, colors are vibrant. Where would you like to live?  Where would you like to go?</p>
+		 	</div>
+		 </div>
 
+	  </div>
+
+
+<!-- class="navbar-fixed-bottom" -->
+
+	  	<!-- create some rows and space with bootstrap columns -->
+	  	
 
 </body>
+<!-- footer with the P tags -->
 </html>
