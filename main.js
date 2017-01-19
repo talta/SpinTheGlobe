@@ -3,6 +3,7 @@ var marker;
 
 
 
+
 function displayMap(){
 	var loc = {lat: 0, lng: 0};
 
@@ -13,9 +14,15 @@ function displayMap(){
 	
 	map.addListener('click', function(event){
 		removeMarker();
+		var icon = {
+			url: 'treasure.svg',
+			size: new google.maps.Size(15, 15),
+			// origin: new google.maps.Point(0,0)
+		}
 		marker = new google.maps.Marker({
 			position: event.latLng, 
-			map: map
+			map: map,
+			icon: icon
 			// animation: google.maps.Animation.DROP,
 		});
 		var geocoder = new google.maps.Geocoder();
