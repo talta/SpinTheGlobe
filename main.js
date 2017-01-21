@@ -21,9 +21,7 @@ function displayMap(){
 
 function locationListener(){
 	map.addListener('click', function(event){
-		//1
 		removeMarker();
-		//2
 		getAddress(event);
 	});
 }
@@ -42,7 +40,6 @@ function getAddress(event){
 
 	function parseAddress(event){
 		geocoder = new google.maps.Geocoder();
-		////parse GeoCoder into correct format:
 		var latAndLng = event.latLng.toString();
 		latAndLng = latAndLng.replace(/[{()}]/g, '');
 		var latlngStr = latAndLng.split(',', 2);
@@ -55,12 +52,11 @@ function getAddress(event){
 						var address = results[0].formatted_address;
 						message = address;
 						bodyType = 'land';
-						console.log('2.b.i status is OK and: ' +message +bodyType);
 					}else {
-						message = ('This body of water is unmarked, but it contains treasures.');
 						bodyType = 'water';
+						message = 'This body of water is unmarked, and may contain treasures.';
 				}
-				console.log('2.b message within findAddress function: '+message)
+				/////functions added here in order to act synchronicously
 				updateIconImage(bodyType);
 				createMarker(event);
 				UpdateWindowMessage(message);
@@ -72,9 +68,7 @@ function getAddress(event){
 
 
 function updateIconImage(bodyType){
-	console.log('3. update icon image called');
 	if(bodyType === 'water'){
-		console.log('update water image called');
 		icon = {
 			url: 'treasure.svg',
 			size: new google.maps.Size (15,15)
@@ -85,12 +79,9 @@ function updateIconImage(bodyType){
 			size: new google.maps.Size (15,15)
 		}
 	}
-	console.log('icon image: '+icon.url);
-	console.log('body type: '+bodyType);
 }
 
 function createMarker(event){
-	console.log('4. create marker called');
 	marker = new google.maps.Marker({
 		position: event.latLng, 
 		map: map,
@@ -99,7 +90,6 @@ function createMarker(event){
 }
 
 function UpdateWindowMessage(message){
-	console.log('5. update window message called');
 	var infoWindow = new google.maps.InfoWindow({
 		content: message
 	});
