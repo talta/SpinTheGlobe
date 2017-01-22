@@ -6,7 +6,6 @@ pick a spot and determine if it would be a good place to live
 
 ##Visual Display:
 
-![screenshot](/screenshot.png)
 Format:![application screenshot](https://github.com/talta/SpinTheGlobe/blob/master/Screenshot.png)
 
 ##Summary:
