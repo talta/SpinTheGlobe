@@ -46,7 +46,6 @@ function getAddress(event){
 
 	function parseAddress(event){
 		///parses the click event results in order to be read by the reverse geocoder
-
 		latLng = event.latLng.toString();
 		latLng = latLng.replace(/[{()}]/g, '');
 		latLng = latLng.split(',', 2);
@@ -57,6 +56,7 @@ function getAddress(event){
 		///reverse geocode the address in order to find the address from the latitute and longitude
 		geocoder = new google.maps.Geocoder();
 	    geocoder.geocode({'location': latLng}, function handleAddress(results, status){
+	    	///handles UI updates based on the results and status returned by the geocode function
 			if (status === 'OK'){
 					var address = results[0].formatted_address;
 					message = address;
