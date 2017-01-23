@@ -1,3 +1,5 @@
+
+//variables to be used throughout multiple functions
 var map;
 var marker;
 var message;
@@ -10,6 +12,7 @@ var geocoder;
 
 
 function displayMap(){
+	///called by the google maps instantiation in the index.html file
 	var loc = {lat: 0, lng: 0};
 
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -20,6 +23,7 @@ function displayMap(){
 }
 
 function locationListener(){
+	/// event listener to allow the map to listen to potential clicks
 	map.addListener('click', function(event){
 		removeMarker();
 		getAddress(event);
@@ -27,6 +31,7 @@ function locationListener(){
 }
 
 function removeMarker(){
+	///removes any previously placed markers which may exist on the map
 	if(typeof marker === 'object' && marker !== null){
 		if (map.getBounds().contains(marker.getPosition() ) ){
 			marker.setMap(null);
@@ -35,10 +40,12 @@ function removeMarker(){
 }	
 
 function getAddress(event){
+	///finds the address of the click event
 	parseAddress(event);
 	geocodeAddress(latLng);
 
 	function parseAddress(event){
+		///parses the click event results in order to be read by the reverse geocoder
 		geocoder = new google.maps.Geocoder();
 		var latAndLng = event.latLng.toString();
 		latAndLng = latAndLng.replace(/[{()}]/g, '');
@@ -47,6 +54,7 @@ function getAddress(event){
 	}
 
 	function geocodeAddress(latLng){
+		///reverse geocode the address in order to find the address from the latitute and longitude
 	    geocoder.geocode({'location': latLng}, function handleAddress(results, status){
 				if (status === 'OK'){
 						var address = results[0].formatted_address;
@@ -68,6 +76,7 @@ function getAddress(event){
 
 
 function updateIconImage(bodyType){
+	///place the marker as an image based on the body type which is clicked: land or water
 	if(bodyType === 'water'){
 		icon = {
 			url: 'treasure.svg',
@@ -82,6 +91,7 @@ function updateIconImage(bodyType){
 }
 
 function createMarker(event){
+	///adds a marker onto the map where the click event occurred
 	marker = new google.maps.Marker({
 		position: event.latLng, 
 		map: map,
@@ -90,6 +100,7 @@ function createMarker(event){
 }
 
 function UpdateWindowMessage(message){
+	///updates the marker's window with pertintent message
 	var infoWindow = new google.maps.InfoWindow({
 		content: message
 	});
