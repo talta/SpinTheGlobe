@@ -47,27 +47,27 @@ function getAddress(event){
 	function parseAddress(event){
 		///parses the click event results in order to be read by the reverse geocoder
 		geocoder = new google.maps.Geocoder();
-		var latAndLng = event.latLng.toString();
-		latAndLng = latAndLng.replace(/[{()}]/g, '');
-		var latlngStr = latAndLng.split(',', 2);
-	    latLng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1]) };
+		latLng = event.latLng.toString();
+		latLng = latLng.replace(/[{()}]/g, '');
+		latLng = latLng.split(',', 2);
+	    latLng = {lat: parseFloat(latLng[0]), lng: parseFloat(latLng[1]) };
 	}
 
 	function geocodeAddress(latLng){
 		///reverse geocode the address in order to find the address from the latitute and longitude
 	    geocoder.geocode({'location': latLng}, function handleAddress(results, status){
-				if (status === 'OK'){
-						var address = results[0].formatted_address;
-						message = address;
-						bodyType = 'land';
-					}else {
-						bodyType = 'water';
-						message = 'This body of water is unmarked, and may contain treasures.';
-				}
-				/////functions added here in order to act synchronicously
-				updateIconImage(bodyType);
-				createMarker(event);
-				UpdateWindowMessage(message);
+			if (status === 'OK'){
+					var address = results[0].formatted_address;
+					message = address;
+					bodyType = 'land';
+				}else {
+					bodyType = 'water';
+					message = 'This body of water is unmarked, and may contain treasures.';
+			}
+			/////functions added here in order to act synchronicously
+			updateIconImage(bodyType);
+			createMarker(event);
+			UpdateWindowMessage(message);
 		});
 	}
 
