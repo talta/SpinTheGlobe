@@ -10,11 +10,9 @@ var geocoder;
 
 
 
-
 function displayMap(){
 	///called by the google maps instantiation in the index.html file
 	var loc = {lat: 0, lng: 0};
-
 	map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 2,
 		center: loc
@@ -71,10 +69,7 @@ function getAddress(event){
 			UpdateWindowMessage(message);
 		});
 	}
-
 }
-
-
 
 function updateIconImage(bodyType){
 	///place the marker as an image based on the body type which is clicked: land or water
@@ -107,10 +102,3 @@ function UpdateWindowMessage(message){
 	});
 	infoWindow.open(map, marker);
 }
-
-
-
-
-
-		
-		
