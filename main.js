@@ -9,7 +9,6 @@ var latLng;
 var geocoder;
 
 
-
 function displayMap(){
 	///called by the google maps instantiation in the index.html file
 	var loc = {lat: 0, lng: 0};
