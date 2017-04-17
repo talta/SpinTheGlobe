@@ -87,6 +87,7 @@ function updateIconImage(bodyType){
 
 function createMarker(event){
 	///adds a marker onto the map where the click event occurred
+	////a variable should be set to the event
 	marker = new google.maps.Marker({
 		position: event.latLng, 
 		map: map,

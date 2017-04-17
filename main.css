@@ -1,6 +1,10 @@
+body {
+	text-align: center;
+}
+
 #map {
 	height: 500px;
-	width: 70%; 
+	width: 100%; 
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
@@ -19,6 +23,7 @@ h1 {
 	color: skyblue;
 	font-family: 'Alegreya', serif;
 	margin-bottom: 10px;
+	text-align: center;
 }
 
 h4 {
